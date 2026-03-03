@@ -6,11 +6,22 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "vite dev --port 3000",
+    "dev": "vite dev --port 3000 --host",
+    "start": "node .output/server/index.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "deploy": "bun run build && wrangler deploy"
+    "format": "biome format",
+    "lint": "biome lint",
+    "check": "biome check",
+    "deploy": "bun run build && wrangler deploy",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:apply": "wrangler d1 migrations apply echadawadb --remote",
+    "db:push": "drizzle-kit push",
+    "db:pull": "drizzle-kit pull",
+    "db:studio": "drizzle-kit studio",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.13.8",
@@ -21,11 +32,18 @@
     "@tanstack/react-router-ssr-query": "^1.131.7",
     "@tanstack/react-start": "^1.132.0",
     "@tanstack/router-plugin": "^1.132.0",
+    "add": "^2.0.6",
     "better-auth": "^1.5.1",
+    "better-sqlite3": "^12.6.2",
+    "class-variance-authority": "^0.7.1",
+    "drizzle-kit": "^0.31.9",
     "drizzle-orm": "^0.45.1",
     "lucide-react": "^0.545.0",
+    "pnpm": "^10.30.3",
+    "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

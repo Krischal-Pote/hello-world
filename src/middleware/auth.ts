@@ -4,14 +4,13 @@ import { getRequestHeaders } from "@tanstack/react-start/server";
 import { and, eq, isNull } from "drizzle-orm";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { db } from "@/db";
-import { users } from "@/db/user.schema";
-import { createUserIfNotExists } from "@/repositories/auth.repository";
 
 const JWKS = createRemoteJWKSet(
     new URL(`${process.env.BETTER_AUTH_URL}/api/auth/jwks`),
 );
 
 import { z } from "zod";
+import { users } from "@/db/user.schema";
 
 export const AuthPayloadSchema = z.object({
     iat: z.number(),
